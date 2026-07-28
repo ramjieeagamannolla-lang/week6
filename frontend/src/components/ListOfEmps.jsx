@@ -17,7 +17,7 @@ function ListOfEmps() {
 
   useEffect(() => {
     async function getEmps() {
-      let res = await fetch("http://localhost:4000/emp-api/employees");
+      let res = await fetch("https://employee-4-ra8f.onrender.com/emp-api/employees");
       if (res.status === 200) {
         let resObj = await res.json();
         setEmps(resObj.payload);
