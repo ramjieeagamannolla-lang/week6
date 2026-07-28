@@ -6,7 +6,7 @@ const app = exp();
 //add cors middleware
 app.use(
   cors({
-    origin: ["mongodb+srv://Ruthwika:ruthwika123@cluster0.fmrvzwm.mongodb.net/?appName=Cluster0"],
+    origin: ["http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   }),
 );
