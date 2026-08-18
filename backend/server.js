@@ -4,6 +4,7 @@ import { connect } from "mongoose";
 import cors from "cors";
 import { empRoute } from "./APIs/empApp.js";
 const app = exp();
+const port = process.env.PORT || 4000;
 //add cors middleware
 app.use(
   cors({
@@ -13,6 +14,9 @@ app.use(
 );
 //body parser middleware
 app.use(exp.json());
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Employee API is running" });
+});
 //emp api middleware
 app.use("/emp-api", empRoute);
 
@@ -21,7 +25,7 @@ const connectDB = async () => {
   try {
     await connect(process.env.DB_URL);
     console.log("DB connected");
-    app.listen(4000, () => console.log("server listening on port 4000.."));
+    app.listen(port, () => console.log(`server listening on port ${port}..`));
   } catch (err) {
     console.log("err in DB connection", err.message);
   }
