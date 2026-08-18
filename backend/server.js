@@ -8,7 +8,7 @@ const port = process.env.PORT || 4000;
 //add cors middleware
 app.use(
   cors({
-    origin: ["https://employee-phi-ruby.vercel.app","http://localhost:5173"],
+    origin: [/\.vercel\.app$/, "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   }),
 );

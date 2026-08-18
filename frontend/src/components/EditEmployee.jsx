@@ -32,7 +32,7 @@ function EditEmployee() {
   const saveModifiedEmp = async (modifiedEmp) => {
     // console.log(modifiedEmp);
     //make HTTP PUT req
-    const res = await axios.put(`https://employee-4-ra8f.onrender.com/emp-api/employees/${employee._id}`, modifiedEmp);
+    const res = await axios.put(`https://week6-backend-w7no.onrender.com/emp-api/employees/${employee._id}`, modifiedEmp);
     if (res.status === 200) {
       //navigate to ListOfEMps
       navigate("/list");
