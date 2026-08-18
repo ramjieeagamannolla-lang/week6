@@ -7,33 +7,41 @@ function EditEmployee() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     setValue,
   } = useForm();
 
   const navigate = useNavigate();
 
   //get empObj from navigate hook
-  const { state } = useLocation();
+  const { state: employee } = useLocation();
   // console.log(state);
 
   useEffect(() => {
-    setValue("name", state.name);
-    setValue("email", state.email);
-    setValue("mobile", state.mobile);
-    setValue("designation", state.designation);
-    setValue("companyName", state.companyName);
-  }, []);
+    if (!employee) {
+      navigate("/list");
+      return;
+    }
+
+    setValue("name", employee.name);
+    setValue("email", employee.email);
+    setValue("mobile", employee.mobile);
+    setValue("designation", employee.designation);
+    setValue("companyName", employee.companyName);
+  }, [employee, navigate, setValue]);
 
   const saveModifiedEmp = async (modifiedEmp) => {
     // console.log(modifiedEmp);
     //make HTTP PUT req
-    const res = await axios.put(`https://employee-4-ra8f.onrender.com/emp-api/employees/${state._id}`, modifiedEmp);
+    const res = await axios.put(`https://employee-4-ra8f.onrender.com/emp-api/employees/${employee._id}`, modifiedEmp);
     if (res.status === 200) {
       //navigate to ListOfEMps
       navigate("/list");
     }
   };
+
+  if (!employee) {
+    return null;
+  }
 
   return (
     <div>

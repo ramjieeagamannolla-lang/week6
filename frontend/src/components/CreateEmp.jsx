@@ -10,7 +10,6 @@ function CreateEmp() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm();
 
   //form submit
