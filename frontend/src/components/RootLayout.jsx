@@ -1,15 +1,15 @@
-import Header from './Header'
-import {Outlet} from 'react-router'
+import Header from "./Header";
+import { Outlet } from "react-router";
 
 function RootLayout() {
   return (
-    <div>
+    <div className="min-h-screen">
       <Header />
-      <div className='min-h-screen mx-20 p-20 bg-gray-100'>
+      <main className="mx-auto min-h-[calc(100vh-73px)] max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <Outlet />
-      </div>
+      </main>
     </div>
-  )
+  );
 }
 
-export default RootLayout
+export default RootLayout;
